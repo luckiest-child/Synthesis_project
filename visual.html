@@ -70,7 +70,7 @@
             Vision impairments vary widely. A person may experience total blindness, low vision, macular degeneration, tunnel vision, or color vision deficiency. Many rely on assistive technologies like screen readers, which convert digital text into synthetic speech or refreshable braille.
           </p>
           <p>
-            When a web application presents important information solely through a graphic—such as a medication label, an order confirmation chart, or a system diagram—without providing text equivalents or accessible semantics, users who cannot see the screen receive nothing. They are forced to rely on others for basic privacy, healthcare decisions, and financial management.
+            When a web application presents important information solely through a graphic&mdash;such as a medication label, an order confirmation chart, or a system diagram&mdash;without providing text equivalents or accessible semantics, users who cannot see the screen receive nothing. They are forced to rely on others for basic privacy, healthcare decisions, and financial management.
           </p>
         </section>
 
@@ -83,7 +83,7 @@
           <h2 id="challenge-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
             Prescription Verification Under Severe Visual Obstruction
           </h2>
-          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-md);">
+          <p class="text-muted" style="font-size: var(--text-base); margin-bottom: var(--space-md);">
             This challenge isolates a simulated severe visual barrier within a dedicated frame. The rest of the page remains fully accessible.
           </p>
 
@@ -146,7 +146,7 @@
               </form>
             </div>
 
-            <!-- Feedback Box -->
+            <!-- Feedback Box & In-Place Completion Notification -->
             <div id="visual-challenge-feedback" class="challenge-status-box" aria-live="polite"></div>
           </div>
         </section>
@@ -207,17 +207,17 @@
           </ul>
         </section>
 
-        <!-- 5. Gated Improved Experience -->
+        <!-- 5. Gated Improved Experience (Second Attempt) -->
         <section class="topic-section" aria-labelledby="improved-heading">
           <div class="section-label">
             <span class="section-num">05</span>
             <span class="section-heading-text">The Improved Experience</span>
           </div>
           <h2 id="improved-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
-            Comparing the Accessible Version
+            Comparing the Accessible Version (Second Attempt)
           </h2>
-          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-lg);">
-            Complete or bypass the challenge in Section 02 to unlock the accessible comparison.
+          <p class="text-muted" style="font-size: var(--text-base); margin-bottom: var(--space-lg);">
+            Complete or bypass the challenge in Section 02 to unlock the accessible second attempt below.
           </p>
 
           <div class="gated-toggle-wrapper">
@@ -239,16 +239,16 @@
               </div>
             </div>
 
-            <!-- Improved Experience Card -->
+            <!-- Improved Experience Card with Second Attempt Task -->
             <div id="visual-improved-display" class="improved-display-card">
               <span class="eyebrow" style="color: var(--color-success);">&check; Accessible Prescription Display</span>
-              <h3 style="margin-bottom: var(--space-xs);">Prescription Refill #8491</h3>
+              <h3 style="margin-bottom: var(--space-xs);">Prescription Refill #8491 (Try the Task Again)</h3>
               
               <div style="background-color: var(--color-surface-muted); border: 1px solid var(--color-border); padding: var(--space-md); border-radius: var(--radius-sm); margin: var(--space-md) 0;">
-                <p style="font-size: var(--text-base); font-weight: 600; color: var(--color-text); margin-bottom: var(--space-xs);">
+                <p style="font-size: var(--text-base); font-weight: 700; color: var(--color-text); margin-bottom: var(--space-xs);">
                   Medication: Amoxicillin 250mg Capsules
                 </p>
-                <p style="font-size: var(--text-sm); color: var(--color-text); line-height: 1.6; margin-bottom: var(--space-xs);">
+                <p style="font-size: var(--text-base); color: var(--color-text); line-height: 1.6; margin-bottom: var(--space-xs);">
                   <strong>Prescribed Dosage:</strong> Take 25mg twice daily after meals with water.
                 </p>
                 <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0;">
@@ -256,7 +256,33 @@
                 </p>
               </div>
 
-              <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md); font-size: var(--text-xs); color: var(--color-text-muted);">
+              <!-- Interactive Second Attempt Form -->
+              <form id="visual-improved-attempt-form" style="margin-top: var(--space-lg);">
+                <fieldset style="border: 1px solid var(--color-border); padding: var(--space-md); border-radius: var(--radius-sm); background: var(--color-surface);">
+                  <legend style="padding: 0 var(--space-xs); font-weight: 700; font-size: var(--text-sm);">
+                    Verify and confirm the prescribed dosage:
+                  </legend>
+
+                  <div style="display: flex; flex-direction: column; gap: var(--space-xs); margin: var(--space-md) 0;">
+                    <label style="display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); cursor: pointer;">
+                      <input type="radio" name="imp_dosage_choice" value="10mg"> 10mg once daily before sleep
+                    </label>
+                    <label style="display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); cursor: pointer;">
+                      <input type="radio" name="imp_dosage_choice" value="25mg"> 25mg twice daily after meals
+                    </label>
+                    <label style="display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); cursor: pointer;">
+                      <input type="radio" name="imp_dosage_choice" value="50mg"> 50mg every morning with food
+                    </label>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-sm">
+                    Verify and Confirm Dosage
+                  </button>
+                  <div id="visual-improved-feedback" style="margin-top: var(--space-md); padding: var(--space-md); font-size: var(--text-sm); display: none;" aria-live="polite"></div>
+                </fieldset>
+              </form>
+
+              <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md); margin-top: var(--space-md); font-size: var(--text-sm); color: var(--color-text-muted);">
                 <strong>Why this version succeeds:</strong> The dosage is rendered as real, semantic text rather than a flattened graphic. Screen readers can announce the exact words, users can highlight and copy the instructions, and text can be enlarged freely without pixelation.
               </div>
             </div>

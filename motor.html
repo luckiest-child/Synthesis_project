@@ -83,8 +83,8 @@
           <h2 id="challenge-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
             Keyboard-Only Sequence Across Awkward Stops
           </h2>
-          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-md);">
-            Pointer input has been simulated as unavailable strictly within the challenge area below. You must use the keyboard.
+          <p class="text-muted" style="font-size: var(--text-base); margin-bottom: var(--space-md);">
+            Pointer clicks are simulated as unavailable strictly within the challenge controls below. You must navigate using standard keyboard controls.
           </p>
 
           <div class="challenge-sandbox" role="region" aria-label="Motor accessibility challenge sandbox">
@@ -102,7 +102,7 @@
                 <strong>The Task:</strong> Complete the 3-step document verification sequence below.
               </p>
               <p style="margin: 0; color: var(--color-text-muted);">
-                Mouse clicks are suppressed within this task area to simulate lack of pointer access. Use <kbd>Tab</kbd> to move focus between the buttons and press <kbd>Enter</kbd> or <kbd>Space</kbd> to activate them in sequence (1 &rarr; 2 &rarr; 3). Notice the awkward jump sequence and missing focus ring on step 2.
+                Mouse clicks are intercepted to simulate lack of pointer access. The steps appear in order (1, 2, 3), but keyboard navigation reaches them in the order 1, 3, 2, with distracting controls in between. Activate them in the required order (1 &rarr; 2 &rarr; 3); after Step 2, press <kbd>Shift+Tab</kbd> twice to return to Step 3. Use <kbd>Tab</kbd> to move forward and <kbd>Enter</kbd> or <kbd>Space</kbd> to activate a step.
               </p>
             </div>
 
@@ -110,54 +110,56 @@
             <div id="motor-original-display">
               <div class="pointer-suppressed-area">
                 <div class="pointer-warning-banner">
-                  [Pointer Input Blocked in this Zone &bull; Use Tab and Enter/Space Keys]
+                  [Pointer Input Blocked in this Zone &bull; Use Tab, Shift+Tab, and Enter/Space Keys]
                 </div>
 
-                <!-- Pointer events suppressed via CSS inline style for the simulation -->
-                <div class="pointer-suppressed-controls" style="pointer-events: none;">
-                  <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
-                    <!-- Step 1: tabindex 1 -->
+                <!-- Deliberately mismatched task and tab order, cramped targets, awkward stops -->
+                <div id="motor-controls-container" class="pointer-suppressed-controls">
+                  <div class="motor-challenge-controls" style="display: flex; gap: var(--space-sm); flex-wrap: wrap; align-items: center;">
+                    <!-- Step 1 -->
                     <button type="button" 
                             id="motor-step-1" 
-                            class="awkward-btn" 
-                            tabindex="1">
+                            class="awkward-btn motor-visual-order-1">
                       Step 1: Load Document
                     </button>
 
-                    <!-- Distracting dummy control in broken tab order: tabindex 3 -->
+                    <!-- Distracting intermediate option in natural DOM order -->
                     <button type="button" 
-                            class="awkward-btn" 
-                            tabindex="3" 
-                            style="opacity: 0.6;">
+                            class="awkward-btn motor-visual-order-4"
+                            style="opacity: 0.65;">
                       Auxiliary Log (Bypass)
                     </button>
 
-                    <!-- Step 2: tabindex 2 (Has missing focus indicator via CSS) -->
-                    <button type="button" 
-                            id="motor-step-2" 
-                            class="awkward-btn" 
-                            tabindex="2" 
-                            style="outline: none !important;">
-                      Step 2: Verify Settings
+                    <!-- Step 3 appears before Step 2 in tab order on purpose -->
+                    <button type="button"
+                            id="motor-step-3"
+                            class="awkward-btn motor-visual-order-3">
+                      Step 3: Finalize Submission
                     </button>
 
-                    <!-- Step 3: tabindex 4 -->
+                    <!-- Second intermediate control -->
                     <button type="button" 
-                            id="motor-step-3" 
-                            class="awkward-btn" 
-                            tabindex="4">
-                      Step 3: Finalize Submission
+                            class="awkward-btn motor-visual-order-5"
+                            style="opacity: 0.65;">
+                      Clear Buffer (Skip)
+                    </button>
+
+                    <!-- Step 2 (Has intentionally faint focus indicator via CSS) -->
+                    <button type="button"
+                            id="motor-step-2"
+                            class="awkward-btn faint-focus motor-visual-order-2">
+                      Step 2: Verify Settings
                     </button>
                   </div>
                 </div>
 
-                <div id="motor-keyboard-feedback" style="margin-top: var(--space-md); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted);" aria-live="polite">
-                  Use Tab to begin navigation...
+                <div id="motor-keyboard-feedback" style="margin-top: var(--space-md); font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-text-muted);" aria-live="polite">
+                  Use Tab to move into the challenge controls...
                 </div>
               </div>
             </div>
 
-            <!-- Feedback Box -->
+            <!-- Feedback Box & Completion Notice (In-place, no auto-scrolling) -->
             <div id="motor-challenge-feedback" class="challenge-status-box" aria-live="polite"></div>
           </div>
         </section>
@@ -173,10 +175,10 @@
           </h2>
           <div class="explanation-panel">
             <p>
-              Navigating with a keyboard or assistive switch device requires physical stamina. When buttons lack visible focus rings, users must repeatedly press Tab while guessing where their cursor landed. If the tab sequence jumps erratically across the page, a simple two-minute form can turn into twenty minutes of frustrating trial and error.
+              Navigating with a keyboard or assistive switch device requires physical stamina. When buttons lack clear, visible focus rings, users must repeatedly press Tab while guessing where their cursor landed. If the tab sequence forces users through extraneous intermediate controls, a simple task turns into dozens of fatiguing keystrokes.
             </p>
             <p>
-              For people experiencing muscle fatigue, motor tremors, or joint pain, poorly sized targets and confusing keyboard paths do not just cause inconvenience—they cause genuine physical discomfort and force individuals to abandon tasks they could otherwise complete independently.
+              For people experiencing muscle fatigue, motor tremors, or joint pain, poorly sized targets and confusing keyboard paths do not just cause inconvenience&mdash;they cause genuine physical discomfort and force individuals to abandon tasks they could otherwise complete independently.
             </p>
           </div>
         </section>
@@ -218,17 +220,17 @@
           </ul>
         </section>
 
-        <!-- 5. Gated Improved Experience -->
+        <!-- 5. Gated Improved Experience (Second Attempt) -->
         <section class="topic-section" aria-labelledby="improved-heading">
           <div class="section-label">
             <span class="section-num">05</span>
             <span class="section-heading-text">The Improved Experience</span>
           </div>
           <h2 id="improved-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
-            Comparing the Accessible Version
+            Comparing the Accessible Version (Second Attempt)
           </h2>
-          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-lg);">
-            Complete or bypass the challenge in Section 02 to unlock the accessible comparison.
+          <p class="text-muted" style="font-size: var(--text-base); margin-bottom: var(--space-lg);">
+            Complete or bypass the challenge in Section 02 to unlock the accessible second attempt below.
           </p>
 
           <div class="gated-toggle-wrapper">
@@ -250,29 +252,32 @@
               </div>
             </div>
 
-            <!-- Improved Experience Card -->
+            <!-- Improved Experience Card with Second Attempt Task -->
             <div id="motor-improved-display" class="improved-display-card">
               <span class="eyebrow" style="color: var(--color-success);">&check; Accessible Action Sequence</span>
-              <h3 style="margin-bottom: var(--space-xs);">Document Verification Toolbar</h3>
+              <h3 style="margin-bottom: var(--space-xs);">Document Verification Toolbar (Try the Task Again)</h3>
               
-              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-md);">
-                Pointer and keyboard navigation are both fully enabled below. Controls feature generous 48px target heights, logical DOM tab sequence, and prominent focus indicators:
+              <p style="font-size: var(--text-base); color: var(--color-text-muted); margin-bottom: var(--space-md);">
+                Try completing the sequence below. Both pointer and keyboard navigation are fully supported. Controls feature generous 48px target heights, natural sequential tab order, and prominent focus indicators:
               </p>
 
+              <!-- Interactive Second Attempt Controls -->
               <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
-                <button type="button" class="btn btn-outline" style="min-height: 48px; padding: var(--space-sm) var(--space-md);">
+                <button type="button" id="motor-improved-step-1" class="accessible-action-btn">
                   1. Load Document
                 </button>
-                <button type="button" class="btn btn-outline" style="min-height: 48px; padding: var(--space-sm) var(--space-md);">
+                <button type="button" id="motor-improved-step-2" class="accessible-action-btn">
                   2. Verify Settings
                 </button>
-                <button type="button" class="btn btn-primary" style="min-height: 48px; padding: var(--space-sm) var(--space-md);">
+                <button type="button" id="motor-improved-step-3" class="accessible-action-btn">
                   3. Finalize Submission
                 </button>
               </div>
 
-              <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md); margin-top: var(--space-md); font-size: var(--text-xs); color: var(--color-text-muted);">
-                <strong>Why this version succeeds:</strong> Both mouse users and keyboard navigators can activate controls with ease. Targets are spacious, the tab order flows naturally from left to right, and clear focus indicators ensure users never lose their position.
+              <div id="motor-improved-feedback" style="margin-top: var(--space-md); padding: var(--space-md); background-color: var(--color-surface-muted); font-size: var(--text-sm); display: none;" aria-live="polite"></div>
+
+              <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md); margin-top: var(--space-md); font-size: var(--text-sm); color: var(--color-text-muted);">
+                <strong>Why this version succeeds:</strong> Both mouse users and keyboard navigators can activate controls with ease. Targets are spacious, the tab order flows naturally from left to right without intermediate traps, and clear focus indicators ensure users never lose their position.
               </div>
             </div>
           </div>

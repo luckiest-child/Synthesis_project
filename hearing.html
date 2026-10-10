@@ -70,7 +70,7 @@
             More than 430 million people worldwide live with disabling hearing loss. This encompasses individuals who are profoundly deaf, people who are hard of hearing and use hearing aids, and older adults experiencing age-related hearing decline. In addition, millions of people browse in quiet study halls, offices, or loud commutes where audio cannot be heard.
           </p>
           <p>
-            When a digital service delivers critical directions—such as a gate change at an airport, an emergency evacuation protocol, or instructions in an educational lecture—solely through spoken dialogue without synchronized captions, deaf and hard-of-hearing individuals are placed at an immediate disadvantage. They cannot participate equitably and are forced to guess or seek external help.
+            When a digital service delivers critical directions&mdash;such as a gate change at an airport, an emergency evacuation protocol, or instructions in an educational lecture&mdash;solely through spoken dialogue without synchronized captions, deaf and hard-of-hearing individuals are placed at an immediate disadvantage. They cannot participate equitably and are forced to guess or seek external help.
           </p>
         </section>
 
@@ -83,7 +83,7 @@
           <h2 id="challenge-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
             The Silent Emergency Transit Broadcast
           </h2>
-          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-md);">
+          <p class="text-muted" style="font-size: var(--text-base); margin-bottom: var(--space-md);">
             In this challenge, spoken information is deliberately withheld to demonstrate the barrier of audio-only communication.
           </p>
 
@@ -112,7 +112,7 @@
                 <span class="audio-track-status">[Live Terminal Broadcast Channel]</span>
                 
                 <div class="silent-media-screen">
-                  <span id="silent-screen-indicator" style="font-family: var(--font-mono); font-size: var(--text-xs); color: #B0B0AA;">
+                  <span id="silent-screen-indicator" style="font-family: var(--font-mono); font-size: var(--text-sm); color: #B0B0AA;">
                     [Press "Play Broadcast" to start scene &bull; Audio track will run silently]
                   </span>
                 </div>
@@ -148,7 +148,7 @@
               </form>
             </div>
 
-            <!-- Feedback Box -->
+            <!-- Feedback Box & In-Place Completion Notification -->
             <div id="hearing-challenge-feedback" class="challenge-status-box" aria-live="polite"></div>
           </div>
         </section>
@@ -209,17 +209,17 @@
           </ul>
         </section>
 
-        <!-- 5. Gated Improved Experience -->
+        <!-- 5. Gated Improved Experience (Second Attempt) -->
         <section class="topic-section" aria-labelledby="improved-heading">
           <div class="section-label">
             <span class="section-num">05</span>
             <span class="section-heading-text">The Improved Experience</span>
           </div>
           <h2 id="improved-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
-            Comparing the Accessible Version
+            Comparing the Accessible Version (Second Attempt)
           </h2>
-          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-lg);">
-            Complete or bypass the challenge in Section 02 to unlock the accessible comparison.
+          <p class="text-muted" style="font-size: var(--text-base); margin-bottom: var(--space-lg);">
+            Complete or bypass the challenge in Section 02 to unlock the accessible second attempt below.
           </p>
 
           <div class="gated-toggle-wrapper">
@@ -241,28 +241,32 @@
               </div>
             </div>
 
-            <!-- Improved Experience Card -->
+            <!-- Improved Experience Card with Second Attempt Task -->
             <div id="hearing-improved-display" class="improved-display-card">
               <span class="eyebrow" style="color: var(--color-success);">&check; Synchronized Captioned Broadcast</span>
-              <h3 style="margin-bottom: var(--space-xs);">Live Transit Update &mdash; Express Rail</h3>
+              <h3 style="margin-bottom: var(--space-xs);">Live Transit Update &mdash; Express Rail (Try the Task Again)</h3>
               
               <!-- Visual Alert Banner -->
-              <div style="background-color: var(--color-surface-muted); border-left: 3px solid var(--color-text); padding: var(--space-md); margin: var(--space-md) 0;" role="status">
-                <p style="font-weight: 700; font-size: var(--text-sm); margin-bottom: 2px;">
+              <div id="visual-status-banner-improved" style="display: none; background-color: var(--color-surface-muted); border-left: 3px solid var(--color-text); padding: var(--space-md); margin: var(--space-md) 0;" role="status">
+                <p style="font-weight: 700; font-size: var(--text-base); margin-bottom: 2px;">
                   ⚠️ Track Maintenance Notice
                 </p>
-                <p style="font-size: var(--text-sm); margin: 0; color: var(--color-text);">
+                <p style="font-size: var(--text-base); margin: 0; color: var(--color-text);">
                   Due to emergency rail inspection on Platform 1, all passengers for the Northbound Express must board the replacement bus at <strong>West Annex Bay 2</strong>.
                 </p>
               </div>
 
-              <!-- Synchronized Captions Box -->
-              <div style="background-color: #1A1A18; color: #FFFFFF; padding: var(--space-md); border-radius: var(--radius-sm); font-size: var(--text-sm); text-align: center; margin-bottom: var(--space-md);">
-                🔊 <strong>[Speaker]:</strong> &ldquo;Attention all passengers: Track 1 is closed for maintenance. Please proceed to <strong>West Annex Bay 2</strong> to board the replacement express shuttle.&rdquo;
+              <!-- Live Captions Box -->
+              <div id="live-caption-display" style="display: none; background-color: #1A1A18; color: #FFFFFF; padding: var(--space-md); border-radius: var(--radius-sm); font-size: var(--text-base); text-align: center; margin-bottom: var(--space-md);"></div>
+
+              <div style="margin-bottom: var(--space-md);">
+                <button type="button" class="btn btn-primary btn-sm" id="btn-play-captioned-broadcast">
+                  ▶ Play Announcement with Captions
+                </button>
               </div>
 
               <!-- Collapsible Full Transcript -->
-              <details style="border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-sm); font-size: var(--text-sm);">
+              <details style="border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-sm); font-size: var(--text-sm); margin-bottom: var(--space-lg);">
                 <summary style="font-weight: 600; cursor: pointer;">
                   📄 View Full Spoken Transcript
                 </summary>
@@ -272,7 +276,33 @@
                 </div>
               </details>
 
-              <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md); margin-top: var(--space-md); font-size: var(--text-xs); color: var(--color-text-muted);">
+              <!-- Interactive Decision Form in the Improved Experience -->
+              <form id="hearing-improved-attempt-form" style="margin-top: var(--space-lg);">
+                <fieldset style="border: 1px solid var(--color-border); padding: var(--space-md); border-radius: var(--radius-sm); background: var(--color-surface);">
+                  <legend style="padding: 0 var(--space-xs); font-weight: 700; font-size: var(--text-sm);">
+                    Where must passengers board according to the captioned broadcast?
+                  </legend>
+
+                  <div style="display: flex; flex-direction: column; gap: var(--space-xs); margin: var(--space-md) 0;">
+                    <label style="display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); cursor: pointer;">
+                      <input type="radio" name="imp_transit_gate" value="gate_4"> Gate 4 (Underground Concourse)
+                    </label>
+                    <label style="display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); cursor: pointer;">
+                      <input type="radio" name="imp_transit_gate" value="west_annex"> Shuttle Bus at West Annex Bay 2
+                    </label>
+                    <label style="display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); cursor: pointer;">
+                      <input type="radio" name="imp_transit_gate" value="platform_1"> Platform 1 (Main Hall)
+                    </label>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-sm">
+                    Confirm Transit Decision
+                  </button>
+                  <div id="hearing-improved-feedback" style="margin-top: var(--space-md); padding: var(--space-md); font-size: var(--text-sm); display: none;" aria-live="polite"></div>
+                </fieldset>
+              </form>
+
+              <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md); margin-top: var(--space-md); font-size: var(--text-sm); color: var(--color-text-muted);">
                 <strong>Why this version succeeds:</strong> Spoken directions are paired immediately with synchronized captions and an on-screen visual alert banner. Visitors who are deaf, hard of hearing, or browsing in sound-sensitive environments have equal, independent access.
               </div>
             </div>

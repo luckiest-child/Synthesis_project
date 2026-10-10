@@ -249,43 +249,49 @@
               </div>
             </div>
 
-            <!-- Improved Experience Card -->
+            <!-- Improved Experience Card with Second Attempt Task -->
             <div id="cog-lang-improved-display" class="improved-display-card">
               <span class="eyebrow" style="color: var(--color-success);">&check; Calm, Plain-Language Application</span>
-              <h3 style="margin-bottom: var(--space-xs);">Community Support Grant Application</h3>
+              <h3 style="margin-bottom: var(--space-xs);">Community Support Grant Application (Try the Task Again)</h3>
               
               <!-- Plain Language Notice -->
               <div style="background-color: var(--color-surface-muted); border-left: 3px solid var(--color-text); padding: var(--space-md); margin: var(--space-md) 0;">
-                <p style="font-weight: 700; font-size: var(--text-sm); margin-bottom: 2px;">
+                <p style="font-weight: 700; font-size: var(--text-base); margin-bottom: 2px;">
                   What you need to know:
                 </p>
-                <p style="font-size: var(--text-sm); margin: 0; color: var(--color-text);">
+                <p style="font-size: var(--text-base); margin: 0; color: var(--color-text);">
                   If you need emergency funding for daily food or basic living costs, please complete the fields below. There is no countdown timer, and you can take as much time as you need.
                 </p>
               </div>
 
-              <!-- Calm Form with Permanent Labels and Helper Notes -->
-              <div style="max-width: 32rem; margin-top: var(--space-lg);">
+              <!-- Interactive Second Attempt Form with Permanent Labels and Helper Notes -->
+              <form id="cog-lang-improved-attempt-form" style="max-width: 32rem; margin-top: var(--space-lg);">
                 <div class="form-field">
-                  <label for="calm-citizen-id">Full Name or Reference Number</label>
+                  <label for="imp-calm-name">Full Name or Reference Number</label>
                   <span style="font-size: var(--text-xs); color: var(--color-text-muted);">As it appears on your identification card.</span>
-                  <input type="text" id="calm-citizen-id" value="Alex Morgan" readonly>
+                  <input type="text" id="imp-calm-name" value="Alex Morgan" required>
                 </div>
 
                 <div class="form-field">
-                  <label for="calm-grant-amount">Requested Grant Amount (&pound;)</label>
+                  <label for="imp-calm-amount">Requested Grant Amount (&pound;)</label>
                   <span style="font-size: var(--text-xs); color: var(--color-text-muted);">Enter the estimated sum needed for living expenses this week.</span>
-                  <input type="text" id="calm-grant-amount" value="150.00" readonly>
+                  <input type="text" id="imp-calm-amount" value="150.00" required>
                 </div>
 
                 <div class="form-field">
-                  <label for="calm-contact-email">Email Address</label>
+                  <label for="imp-calm-email">Email Address</label>
                   <span style="font-size: var(--text-xs); color: var(--color-text-muted);">We will email your confirmation and next steps here.</span>
-                  <input type="email" id="calm-contact-email" value="alex.morgan@example.com" readonly>
+                  <input type="email" id="imp-calm-email" value="alex.morgan@example.com" required>
                 </div>
-              </div>
 
-              <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md); margin-top: var(--space-md); font-size: var(--text-xs); color: var(--color-text-muted);">
+                <button type="submit" class="btn btn-primary btn-sm" style="margin-top: var(--space-xs);">
+                  Submit Application Calmly
+                </button>
+
+                <div id="cog-lang-improved-feedback" style="margin-top: var(--space-md); padding: var(--space-md); background-color: var(--color-surface-muted); font-size: var(--text-sm); display: none;" aria-live="polite"></div>
+              </form>
+
+              <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md); margin-top: var(--space-md); font-size: var(--text-sm); color: var(--color-text-muted);">
                 <strong>Why this version succeeds:</strong> No countdown timer pressures the reader. Field labels are permanent and clearly separated from helper hints, and the instructions are written in plain, respectful English that everyone can understand.
               </div>
             </div>

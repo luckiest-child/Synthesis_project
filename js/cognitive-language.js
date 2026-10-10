@@ -1,8 +1,8 @@
 /**
  * ============================================================================
  * LUMINA - COGNITIVE & LANGUAGE ACCESSIBILITY SCRIPT (cognitive-language.js)
- * Manages the "Start Challenge" activation, automatic timer, form clutter,
- * plain-language comparison, gated toggle unlocking, and accessible calm form.
+ * Manages "Start Challenge" activation, automatic timer, in-place completion notice,
+ * and an interactive second attempt in the calm plain-language form.
  * Pure Vanilla JavaScript (ES6).
  * ============================================================================
  */
@@ -12,22 +12,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initCognitiveLanguageExperience() {
+  // Elements for Original Challenge
   const startBtn = document.getElementById('btn-start-cognitive-task');
   const taskArea = document.getElementById('cognitive-task-active-area');
   const timerDisplay = document.getElementById('cognitive-active-timer');
   const cognitiveForm = document.getElementById('cognitive-cluttered-form');
   const challengeFeedback = document.getElementById('cognitive-challenge-feedback');
   const skipBtn = document.getElementById('btn-skip-cognitive-challenge');
+
+  // Gated Toggle Elements
   const gateStatus = document.getElementById('cog-lang-gate-status');
   const toggleBtn = document.getElementById('cog-lang-toggle-btn');
   const improvedDisplay = document.getElementById('cog-lang-improved-display');
-  const originalDisplay = document.getElementById('cog-lang-original-display');
+  const originalDisplay = document.getElementById('cognitive-language-original-display');
 
-  let isCompleted = false;
+  // Elements for Improved Second-Attempt Task
+  const impForm = document.getElementById('cog-lang-improved-attempt-form');
+  const impFeedback = document.getElementById('cog-lang-improved-feedback');
+
+  let isOriginalCompleted = false;
   let timerInterval = null;
   let secondsRemaining = 20;
 
-  // 1. Starting the challenge automatically activates task and timer
+  // --------------------------------------------------------------------------
+  // 1. Original Challenge: Start Trigger, Automatic Timer & Submission
+  // --------------------------------------------------------------------------
   if (startBtn && taskArea) {
     startBtn.addEventListener('click', () => {
       startBtn.style.display = 'none';
@@ -44,7 +53,7 @@ function initCognitiveLanguageExperience() {
 
         if (secondsRemaining <= 0) {
           clearInterval(timerInterval);
-          completeChallenge(
+          completeOriginalChallenge(
             '<strong>Time Limit Reached:</strong> The 20-second timer ran out. Notice how an arbitrary ticking clock divides attention and creates anxiety, especially for people with ADHD, dyslexia, or processing differences who need extra time to read.'
           );
         }
@@ -52,59 +61,58 @@ function initCognitiveLanguageExperience() {
     });
   }
 
-  // 2. Form submission attempt
   if (cognitiveForm) {
     cognitiveForm.addEventListener('submit', (e) => {
       e.preventDefault();
       clearInterval(timerInterval);
 
-      completeChallenge(
+      completeOriginalChallenge(
         '<strong>Task Attempted:</strong> Even with submission, notice how ambiguous placeholder labels and competing cluttered text made it difficult to be certain what was required. Wiping form inputs or rushing users leads to high error rates and cognitive fatigue.'
       );
     });
   }
 
-  // 3. Skip simulation button
+  // Skip simulation button
   if (skipBtn) {
     skipBtn.addEventListener('click', () => {
       clearInterval(timerInterval);
-      completeChallenge(
+      completeOriginalChallenge(
         '<strong>Simulation Bypassed:</strong> This demonstration highlighted how strict time limits, missing persistent labels, and dense jargon overwhelm cognitive processing and working memory.'
       );
     });
   }
 
-  function completeChallenge(message) {
-    if (isCompleted) return;
-    isCompleted = true;
+  function completeOriginalChallenge(explanationHtml) {
+    if (isOriginalCompleted) return;
+    isOriginalCompleted = true;
 
-    showFeedback(challengeFeedback, message, 'info');
+    // Display explanation AND clear completion notification WITHOUT moving page/focus
+    if (challengeFeedback) {
+      challengeFeedback.innerHTML = `
+        ${explanationHtml}
+        <div class="challenge-completion-notice" role="status">
+          <span>Challenge completed! Scroll down to try the improved version.</span>
+          <span class="notice-arrow" aria-hidden="true">&darr;</span>
+        </div>
+      `;
+      challengeFeedback.className = 'challenge-status-box is-visible';
+    }
 
-    // Unlock the gated improved-version toggle
+    // Unlock the gated toggle (DO NOT call focus(), DO NOT scroll)
     if (toggleBtn && gateStatus) {
       toggleBtn.removeAttribute('disabled');
       toggleBtn.setAttribute('aria-disabled', 'false');
       gateStatus.textContent = '✓ Challenge completed. Improved accessible version is now unlocked:';
       gateStatus.className = 'gate-status-msg is-unlocked';
-      toggleBtn.focus();
     }
   }
 
-  function showFeedback(container, htmlContent, type) {
-    if (!container) return;
-    container.innerHTML = htmlContent;
-    container.className = 'challenge-status-box is-visible';
-    if (type === 'warning') {
-      container.style.borderLeft = '3px solid var(--color-accent)';
-    } else {
-      container.style.borderLeft = '3px solid var(--color-text)';
-    }
-  }
-
-  // 4. Gated Toggle Logic
+  // --------------------------------------------------------------------------
+  // 2. Gated Toggle Logic (Switches view on visitor activation)
+  // --------------------------------------------------------------------------
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
-      if (!isCompleted) return;
+      if (!isOriginalCompleted) return;
 
       const isShowingImproved = toggleBtn.getAttribute('aria-pressed') === 'true';
       const nextState = !isShowingImproved;
@@ -123,5 +131,41 @@ function initCognitiveLanguageExperience() {
         if (improvedDisplay) improvedDisplay.classList.remove('is-active');
       }
     });
+  }
+
+  // --------------------------------------------------------------------------
+  // 3. Improved Experience: Second Attempt Interaction
+  // --------------------------------------------------------------------------
+  if (impForm) {
+    impForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('imp-calm-name');
+      const amountInput = document.getElementById('imp-calm-amount');
+      const emailInput = document.getElementById('imp-calm-email');
+
+      if (!nameInput.value.trim() || !amountInput.value.trim() || !emailInput.value.trim()) {
+        showImprovedFeedback('Please fill out the required fields to submit.', 'warning');
+        return;
+      }
+
+      showImprovedFeedback(
+        '✓ Application Submitted Calmly: With permanent labels, plain language, and zero countdown pressure, you were able to complete the application with confidence and clarity.',
+        'success'
+      );
+    });
+  }
+
+  function showImprovedFeedback(msg, type) {
+    if (!impFeedback) return;
+    impFeedback.textContent = msg;
+    impFeedback.style.display = 'block';
+    if (type === 'success') {
+      impFeedback.style.color = 'var(--color-success)';
+      impFeedback.style.borderLeft = '3px solid var(--color-success)';
+    } else {
+      impFeedback.style.color = 'var(--color-accent)';
+      impFeedback.style.borderLeft = '3px solid var(--color-accent)';
+    }
   }
 }
