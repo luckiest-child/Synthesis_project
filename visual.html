@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Accessibility — Lumina</title>
+  <meta name="description" content="Explore how visual barriers and missing text descriptions impact independence for people who are blind or have low vision.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/topics.css">
+</head>
+<body>
+
+  <!-- Accessible Skip Link (WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="site-logo" aria-label="Lumina Home">
+        <span class="logo-text">Lumina</span>
+        <span class="logo-tag">/ Visual</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open navigation">
+        Menu
+      </button>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Overview</a></li>
+          <li><a href="visual.html" class="nav-link" aria-current="page">Visual</a></li>
+          <li><a href="hearing.html" class="nav-link">Hearing</a></li>
+          <li><a href="motor.html" class="nav-link">Motor</a></li>
+          <li><a href="cognitive-language.html" class="nav-link">Cognitive &amp; Language</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content" class="main-content">
+    
+    <!-- Topic Header -->
+    <header class="topic-header">
+      <div class="container-editorial">
+        <div class="topic-meta">
+          <span>Topic 01 &mdash; Visual Accessibility</span>
+          <span>Perception &amp; Text Equivalents</span>
+        </div>
+        <h1>Visual Accessibility: Beyond the Visible Surface</h1>
+        <p class="lead-text">
+          Millions of people browse the web using screen readers, screen magnifiers, or customized color schemes. When vital instructions or graphics lack non-visual equivalents, everyday tasks become insurmountable obstacles.
+        </p>
+      </div>
+    </header>
+
+    <div class="container-editorial">
+      <div class="topic-flow">
+
+        <!-- 1. Empathetic Introduction -->
+        <section class="topic-section" aria-labelledby="intro-heading">
+          <div class="section-label">
+            <span class="section-num">01</span>
+            <span class="section-heading-text">The Lived Barrier</span>
+          </div>
+          <h2 id="intro-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">
+            When Critical Information Is Locked in Unannounced Pixels
+          </h2>
+          <p>
+            Vision impairments vary widely. A person may experience total blindness, low vision, macular degeneration, tunnel vision, or color vision deficiency. Many rely on assistive technologies like screen readers, which convert digital text into synthetic speech or refreshable braille.
+          </p>
+          <p>
+            When a web application presents important information solely through a graphic—such as a medication label, an order confirmation chart, or a system diagram—without providing text equivalents or accessible semantics, users who cannot see the screen receive nothing. They are forced to rely on others for basic privacy, healthcare decisions, and financial management.
+          </p>
+        </section>
+
+        <!-- 2. The Interactive Challenge (Isolated Sandbox) -->
+        <section class="topic-section" aria-labelledby="challenge-heading">
+          <div class="section-label">
+            <span class="section-num">02</span>
+            <span class="section-heading-text">The Interactive Challenge</span>
+          </div>
+          <h2 id="challenge-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
+            Prescription Verification Under Severe Visual Obstruction
+          </h2>
+          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-md);">
+            This challenge isolates a simulated severe visual barrier within a dedicated frame. The rest of the page remains fully accessible.
+          </p>
+
+          <div class="challenge-sandbox" role="region" aria-label="Visual accessibility challenge sandbox">
+            <div class="sandbox-header">
+              <span class="sandbox-badge">
+                Isolated Barrier Simulation
+              </span>
+              <button type="button" class="btn btn-outline btn-sm" id="btn-skip-visual-challenge">
+                Skip Simulation / View Explanation
+              </button>
+            </div>
+
+            <div class="sandbox-instructions">
+              <p>
+                <strong>The Task:</strong> You are reviewing an online prescription refill before taking your medication. You must verify the daily dosage instructions.
+              </p>
+              <p style="margin: 0; color: var(--color-text-muted);">
+                In this intentionally inaccessible interface, the dosage instruction is embedded solely inside the visual container below, which has been obscured to simulate the complete absence of visual access. Try to determine the dosage and select the correct option.
+              </p>
+            </div>
+
+            <!-- Original Problematic Display Area -->
+            <div id="visual-original-display">
+              <!-- Simulated Obscured Field (Visual content inaccessible) -->
+              <div class="occluded-viewport" aria-hidden="true">
+                <div class="occluded-overlay">
+                  <span style="font-weight: 700; color: #FFFFFF; margin-bottom: 6px;">[Visual Display Obscured]</span>
+                  <span>Critical dosage text is rendered inside a flat image without accessible text alternatives.</span>
+                </div>
+                <div class="occluded-task-content">
+                  <h3>Prescription Refill #8491</h3>
+                  <p>Take 25mg twice daily after meals with water.</p>
+                </div>
+              </div>
+
+              <!-- Decision Form outside the obscured frame -->
+              <form id="visual-attempt-form" style="margin-top: var(--space-lg);">
+                <fieldset style="border: 1px solid var(--color-border); padding: var(--space-md); border-radius: var(--radius-sm);">
+                  <legend style="padding: 0 var(--space-xs); font-weight: 700; font-size: var(--text-sm);">
+                    Select the prescribed daily dosage:
+                  </legend>
+
+                  <div style="display: flex; flex-direction: column; gap: var(--space-xs); margin: var(--space-md) 0;">
+                    <label style="display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); cursor: pointer;">
+                      <input type="radio" name="dosage_choice" value="10mg"> 10mg once daily before sleep
+                    </label>
+                    <label style="display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); cursor: pointer;">
+                      <input type="radio" name="dosage_choice" value="25mg"> 25mg twice daily after meals
+                    </label>
+                    <label style="display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); cursor: pointer;">
+                      <input type="radio" name="dosage_choice" value="50mg"> 50mg every morning with food
+                    </label>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-sm">
+                    Confirm Dosage Selection
+                  </button>
+                </fieldset>
+              </form>
+            </div>
+
+            <!-- Feedback Box -->
+            <div id="visual-challenge-feedback" class="challenge-status-box" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <!-- 3. Real-Life Explanation Section -->
+        <section class="topic-section" aria-labelledby="explanation-heading">
+          <div class="section-label">
+            <span class="section-num">03</span>
+            <span class="section-heading-text">Connecting to Everyday Life</span>
+          </div>
+          <h2 id="explanation-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">
+            The Cost of Inaccessible Visual Information
+          </h2>
+          <div class="explanation-panel">
+            <p>
+              When essential information exists only as an image or an unlabelled visual element, people who cannot see the screen face serious risks. In high-stakes contexts like healthcare, banking, or travel, having to guess an instruction is dangerous.
+            </p>
+            <p>
+              Beyond the immediate task failure, this design barrier forces individuals into unnecessary dependence on family members or strangers. True web accessibility preserves personal dignity and self-sufficiency by ensuring that every visual piece of information has a complete, programmatic text alternative.
+            </p>
+          </div>
+        </section>
+
+        <!-- 4. Practical Solutions (Concise Bullet Points) -->
+        <section class="topic-section" aria-labelledby="solutions-heading">
+          <div class="section-label">
+            <span class="section-num">04</span>
+            <span class="section-heading-text">Practical Solutions</span>
+          </div>
+          <h2 id="solutions-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">
+            How Designers and Developers Remove This Barrier
+          </h2>
+          <ul class="solutions-list">
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Provide informative alternative text:</strong> Ensure all meaningful images have an <code>alt</code> attribute describing their actual content and function, not raw filenames.
+              </div>
+            </li>
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Render critical information as real text:</strong> Never embed essential instructions, numbers, or dosages solely inside flattened image files.
+              </div>
+            </li>
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Maintain sufficient color contrast:</strong> Ensure text meets the WCAG AA minimum ratio of 4.5:1 against its background so visitors with low vision can read comfortably.
+              </div>
+            </li>
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Support text scaling:</strong> Allow users to resize text up to 200% without breaking layouts, clipping words, or requiring horizontal scrolling.
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 5. Gated Improved Experience -->
+        <section class="topic-section" aria-labelledby="improved-heading">
+          <div class="section-label">
+            <span class="section-num">05</span>
+            <span class="section-heading-text">The Improved Experience</span>
+          </div>
+          <h2 id="improved-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
+            Comparing the Accessible Version
+          </h2>
+          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-lg);">
+            Complete or bypass the challenge in Section 02 to unlock the accessible comparison.
+          </p>
+
+          <div class="gated-toggle-wrapper">
+            <div class="toggle-header">
+              <div>
+                <span id="visual-gate-status" class="gate-status-msg">
+                  &bull; Complete the challenge above to unlock this toggle.
+                </span>
+              </div>
+              <div class="switch-control">
+                <button type="button" 
+                        class="toggle-btn" 
+                        id="visual-toggle-btn" 
+                        disabled 
+                        aria-disabled="true" 
+                        aria-pressed="false">
+                  Switch to Improved (Accessible)
+                </button>
+              </div>
+            </div>
+
+            <!-- Improved Experience Card -->
+            <div id="visual-improved-display" class="improved-display-card">
+              <span class="eyebrow" style="color: var(--color-success);">&check; Accessible Prescription Display</span>
+              <h3 style="margin-bottom: var(--space-xs);">Prescription Refill #8491</h3>
+              
+              <div style="background-color: var(--color-surface-muted); border: 1px solid var(--color-border); padding: var(--space-md); border-radius: var(--radius-sm); margin: var(--space-md) 0;">
+                <p style="font-size: var(--text-base); font-weight: 600; color: var(--color-text); margin-bottom: var(--space-xs);">
+                  Medication: Amoxicillin 250mg Capsules
+                </p>
+                <p style="font-size: var(--text-sm); color: var(--color-text); line-height: 1.6; margin-bottom: var(--space-xs);">
+                  <strong>Prescribed Dosage:</strong> Take 25mg twice daily after meals with water.
+                </p>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin: 0;">
+                  Doctor: Dr. Eleanor Vance &bull; Refills Remaining: 2 &bull; Pharmacy Hotline: (555) 019-2834
+                </p>
+              </div>
+
+              <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md); font-size: var(--text-xs); color: var(--color-text-muted);">
+                <strong>Why this version succeeds:</strong> The dosage is rendered as real, semantic text rather than a flattened graphic. Screen readers can announce the exact words, users can highlight and copy the instructions, and text can be enlarged freely without pixelation.
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation -->
+          <nav class="topic-nav-footer" aria-label="Experience pagination">
+            <a href="index.html" class="btn btn-outline">
+              &larr; Back to Overview
+            </a>
+            <a href="hearing.html" class="btn btn-primary">
+              Next: Hearing Accessibility &rarr;
+            </a>
+          </nav>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Minimal Single-Line Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <span><strong>Lumina</strong> &mdash; An academic web accessibility awareness project.</span>
+      <span>Built with semantic HTML5, CSS3, and Vanilla JavaScript &bull; &copy; 2026</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/visual.js"></script>
+</body>
+</html>

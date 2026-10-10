@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumina — Web Accessibility Awareness</title>
+  <meta name="description" content="Lumina explores how everyday web design decisions create barriers for people with accessibility needs, and how inclusive design removes them.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Home Page Editorial Layout */
+    .hero {
+      padding: var(--space-4xl) 0 var(--space-3xl) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .hero-inner {
+      max-width: var(--max-width-editorial);
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw + 1rem, var(--text-4xl));
+      margin-bottom: var(--space-md);
+      line-height: 1.15;
+    }
+
+    .hero-summary {
+      font-size: var(--text-lg);
+      line-height: 1.6;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-xl);
+      max-width: 44rem;
+    }
+
+    /* Topic Cards Grid (SiteInspire Inspired) */
+    .topics-section {
+      padding: var(--space-4xl) 0;
+    }
+
+    .section-intro-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-2xl);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--space-md);
+    }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-xl);
+    }
+
+    .topic-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color var(--transition-quick);
+    }
+
+    .topic-card:hover {
+      border-color: var(--color-border-strong);
+    }
+
+    .topic-card-header {
+      margin-bottom: var(--space-md);
+    }
+
+    .topic-card-num {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2xs);
+    }
+
+    .topic-card-title {
+      font-size: var(--text-xl);
+      color: var(--color-text);
+      margin-bottom: var(--space-sm);
+    }
+
+    .topic-card-body p {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      margin-bottom: var(--space-xl);
+    }
+
+    .topic-card-footer {
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Philosophy Section */
+    .philosophy-section {
+      background-color: var(--color-surface-muted);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-3xl) 0;
+    }
+
+    .philosophy-inner {
+      max-width: var(--max-width-editorial);
+    }
+
+    .philosophy-inner p {
+      font-size: var(--text-md);
+      line-height: 1.7;
+      color: var(--color-text);
+    }
+
+    /* About Section */
+    .about-section {
+      padding: var(--space-3xl) 0 var(--space-2xl) 0;
+    }
+
+    .about-inner {
+      max-width: var(--max-width-editorial);
+    }
+
+    @media (max-width: 768px) {
+      .topics-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: var(--space-2xl) 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip Link (WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="site-logo" aria-label="Lumina Home">
+        <span class="logo-text">Lumina</span>
+        <span class="logo-tag">/ Accessibility</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open navigation">
+        Menu
+      </button>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link" aria-current="page">Overview</a></li>
+          <li><a href="visual.html" class="nav-link">Visual</a></li>
+          <li><a href="hearing.html" class="nav-link">Hearing</a></li>
+          <li><a href="motor.html" class="nav-link">Motor</a></li>
+          <li><a href="cognitive-language.html" class="nav-link">Cognitive &amp; Language</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content" class="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <span class="eyebrow">Web Accessibility Awareness</span>
+        <h1 id="hero-title" class="hero-title">Everyday design decisions create real barriers.</h1>
+        <p class="hero-summary">
+          Web accessibility is not an abstract compliance checklist. Lumina explores how specific design choices prevent people with disabilities from accessing information, completing tasks, and participating independently online.
+        </p>
+        <div>
+          <a href="#topics" class="btn btn-primary">
+            Explore the Accessibility Areas &darr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topics Grid Section -->
+    <section id="topics" class="topics-section" aria-labelledby="topics-title">
+      <div class="container">
+        <div class="section-intro-bar">
+          <div>
+            <span class="eyebrow">Areas of Focus</span>
+            <h2 id="topics-title" style="font-size: var(--text-2xl); margin: 0;">Accessibility Barriers &amp; Challenges</h2>
+          </div>
+          <span class="text-muted" style="font-size: var(--text-sm);">4 Core Areas</span>
+        </div>
+
+        <div class="topics-grid">
+
+          <!-- Card 1: Visual Accessibility -->
+          <article class="topic-card">
+            <div>
+              <div class="topic-card-header">
+                <div class="topic-card-num">01 / Visual</div>
+                <h3 class="topic-card-title">Visual Accessibility</h3>
+              </div>
+              <div class="topic-card-body">
+                <p>
+                  People with blindness, low vision, or color vision deficiencies face immediate barriers when interfaces depend on visual information. Unlabelled graphics, faint text contrast, and missing alternative descriptions make content difficult or impossible to perceive.
+                </p>
+              </div>
+            </div>
+            <div class="topic-card-footer">
+              <span class="text-muted" style="font-size: var(--text-xs);">Perception &amp; Text Alternatives</span>
+              <a href="visual.html" class="btn btn-outline btn-sm" aria-label="Learn about visual accessibility barriers and solutions">
+                Learn about this &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2: Hearing Accessibility -->
+          <article class="topic-card">
+            <div>
+              <div class="topic-card-header">
+                <div class="topic-card-num">02 / Auditory</div>
+                <h3 class="topic-card-title">Hearing Accessibility</h3>
+              </div>
+              <div class="topic-card-body">
+                <p>
+                  People who are deaf or hard of hearing miss essential announcements, instructions, and discussions when multimedia relies solely on sound. Without synchronized captions, transcripts, or visual cues, vital information is withheld.
+                </p>
+              </div>
+            </div>
+            <div class="topic-card-footer">
+              <span class="text-muted" style="font-size: var(--text-xs);">Captions &amp; Media Alternatives</span>
+              <a href="hearing.html" class="btn btn-outline btn-sm" aria-label="Learn about hearing accessibility barriers and solutions">
+                Learn about this &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3: Motor Accessibility -->
+          <article class="topic-card">
+            <div>
+              <div class="topic-card-header">
+                <div class="topic-card-num">03 / Motor</div>
+                <h3 class="topic-card-title">Motor Accessibility</h3>
+              </div>
+              <div class="topic-card-body">
+                <p>
+                  People with tremors, arthritis, or paralysis, as well as keyboard-only navigators, struggle with interfaces that demand pixel-perfect pointer accuracy. Microscopic targets, missing focus indicators, and erratic tab orders cause severe physical fatigue and errors.
+                </p>
+              </div>
+            </div>
+            <div class="topic-card-footer">
+              <span class="text-muted" style="font-size: var(--text-xs);">Keyboard Flow &amp; Target Size</span>
+              <a href="motor.html" class="btn btn-outline btn-sm" aria-label="Learn about motor accessibility barriers and solutions">
+                Learn about this &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 4: Cognitive & Language Accessibility -->
+          <article class="topic-card">
+            <div>
+              <div class="topic-card-header">
+                <div class="topic-card-num">04 / Cognitive &amp; Language</div>
+                <h3 class="topic-card-title">Cognitive &amp; Language Accessibility</h3>
+              </div>
+              <div class="topic-card-body">
+                <p>
+                  Confusing instructions, cluttered layouts, artificial countdown timers, and dense bureaucratic jargon place heavy demands on mental processing. Clear structure and plain language ensure information can be understood by neurodivergent users and diverse audiences alike.
+                </p>
+              </div>
+            </div>
+            <div class="topic-card-footer">
+              <span class="text-muted" style="font-size: var(--text-xs);">Clarity, Calm &amp; Inclusive Language</span>
+              <a href="cognitive-language.html" class="btn btn-outline btn-sm" aria-label="Learn about cognitive and language accessibility barriers and solutions">
+                Learn about this &rarr;
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Philosophy Section -->
+    <section class="philosophy-section" aria-labelledby="philosophy-title">
+      <div class="container philosophy-inner">
+        <span class="eyebrow">Core Philosophy</span>
+        <h2 id="philosophy-title" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">Design Decisions Shape Inclusion</h2>
+        <p>
+          Barriers on the web are rarely intentional, but they are almost always the direct consequence of developer and designer choices. When we build interfaces assuming that all visitors possess standard vision, hearing, dexterity, and processing speed, we inadvertently exclude millions from education, public services, and daily life.
+        </p>
+        <p style="margin-top: var(--space-md); color: var(--color-text-muted); font-size: var(--text-sm);">
+          Lumina is built on the premise that encountering these barriers firsthand fosters informed empathy and practical competence. Accessible design is not about limiting creativity; it is about ensuring that what we create is usable by everyone.
+        </p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" aria-labelledby="about-title">
+      <div class="container about-inner">
+        <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-2xl);">
+          <span class="eyebrow">Project Context</span>
+          <h2 id="about-title" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">About Lumina</h2>
+          <p class="text-muted" style="font-size: var(--text-sm); line-height: 1.7; margin-bottom: var(--space-md);">
+            Lumina is an academic mini synthesis project built using standard HTML5, CSS3, and vanilla JavaScript. Its purpose is to demonstrate introductory front-end web development principles while examining how digital barriers affect people in everyday life.
+          </p>
+          <p class="text-muted" style="font-size: var(--text-sm); line-height: 1.7;">
+            <strong>Accessibility Commitment:</strong> This website is built to conform to WCAG 2.1 Level AA recommendations, featuring semantic HTML landmarks, high text contrast (>15:1), full keyboard accessibility, visible focus indicators, and responsive layouts that adapt to any screen size.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Minimal Single-Line Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <span><strong>Lumina</strong> &mdash; An academic web accessibility awareness project.</span>
+      <span>Built with semantic HTML5, CSS3, and Vanilla JavaScript &bull; &copy; 2026</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

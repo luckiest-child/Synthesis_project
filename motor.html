@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motor Accessibility — Lumina</title>
+  <meta name="description" content="Explore how small click targets and broken keyboard navigation create physical fatigue and exclusion for people with motor impairments.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/topics.css">
+</head>
+<body>
+
+  <!-- Accessible Skip Link (WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="site-logo" aria-label="Lumina Home">
+        <span class="logo-text">Lumina</span>
+        <span class="logo-tag">/ Motor</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open navigation">
+        Menu
+      </button>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Overview</a></li>
+          <li><a href="visual.html" class="nav-link">Visual</a></li>
+          <li><a href="hearing.html" class="nav-link">Hearing</a></li>
+          <li><a href="motor.html" class="nav-link" aria-current="page">Motor</a></li>
+          <li><a href="cognitive-language.html" class="nav-link">Cognitive &amp; Language</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content" class="main-content">
+    
+    <!-- Topic Header -->
+    <header class="topic-header">
+      <div class="container-editorial">
+        <div class="topic-meta">
+          <span>Topic 03 &mdash; Motor Accessibility</span>
+          <span>Keyboard Flow &amp; Target Size</span>
+        </div>
+        <h1>Motor Accessibility: Precision, Fatigue, and Control</h1>
+        <p class="lead-text">
+          Not everyone navigates digital interfaces using a smooth mouse or agile touchscreen gestures. Millions navigate using keyboards, mouth wands, switch devices, or hands affected by tremors, arthritis, and fatigue.
+        </p>
+      </div>
+    </header>
+
+    <div class="container-editorial">
+      <div class="topic-flow">
+
+        <!-- 1. Empathetic Introduction -->
+        <section class="topic-section" aria-labelledby="intro-heading">
+          <div class="section-label">
+            <span class="section-num">01</span>
+            <span class="section-heading-text">The Lived Barrier</span>
+          </div>
+          <h2 id="intro-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">
+            When Pixel Precision Demands Impossible Effort
+          </h2>
+          <p>
+            Motor limitations include conditions such as Parkinson's disease, cerebral palsy, muscular dystrophy, repetitive strain injury (RSI), stroke recovery, and temporary arm injuries. Many people cannot hold a mouse steady or make precise 10-pixel adjustments on a screen.
+          </p>
+          <p>
+            When developers create microscopic click targets (under 24px) or delete focus indicators (<code>outline: none</code>), keyboard-only navigators and individuals with tremors face constant failure. A minor tremor triggers repeated misclicks, while keyboard navigators lose track of where they are on the page. Simple daily interactions become physically exhausting and frustrating.
+          </p>
+        </section>
+
+        <!-- 2. The Interactive Challenge (Isolated Sandbox) -->
+        <section class="topic-section" aria-labelledby="challenge-heading">
+          <div class="section-label">
+            <span class="section-num">02</span>
+            <span class="section-heading-text">The Interactive Challenge</span>
+          </div>
+          <h2 id="challenge-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
+            Keyboard-Only Sequence Across Awkward Stops
+          </h2>
+          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-md);">
+            Pointer input has been simulated as unavailable strictly within the challenge area below. You must use the keyboard.
+          </p>
+
+          <div class="challenge-sandbox" role="region" aria-label="Motor accessibility challenge sandbox">
+            <div class="sandbox-header">
+              <span class="sandbox-badge">
+                Isolated Barrier Simulation
+              </span>
+              <button type="button" class="btn btn-outline btn-sm" id="btn-skip-motor-challenge">
+                Skip Simulation / View Explanation
+              </button>
+            </div>
+
+            <div class="sandbox-instructions">
+              <p>
+                <strong>The Task:</strong> Complete the 3-step document verification sequence below.
+              </p>
+              <p style="margin: 0; color: var(--color-text-muted);">
+                Mouse clicks are suppressed within this task area to simulate lack of pointer access. Use <kbd>Tab</kbd> to move focus between the buttons and press <kbd>Enter</kbd> or <kbd>Space</kbd> to activate them in sequence (1 &rarr; 2 &rarr; 3). Notice the awkward jump sequence and missing focus ring on step 2.
+              </p>
+            </div>
+
+            <!-- Original Problematic Display Area -->
+            <div id="motor-original-display">
+              <div class="pointer-suppressed-area">
+                <div class="pointer-warning-banner">
+                  [Pointer Input Blocked in this Zone &bull; Use Tab and Enter/Space Keys]
+                </div>
+
+                <!-- Pointer events suppressed via CSS inline style for the simulation -->
+                <div class="pointer-suppressed-controls" style="pointer-events: none;">
+                  <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+                    <!-- Step 1: tabindex 1 -->
+                    <button type="button" 
+                            id="motor-step-1" 
+                            class="awkward-btn" 
+                            tabindex="1">
+                      Step 1: Load Document
+                    </button>
+
+                    <!-- Distracting dummy control in broken tab order: tabindex 3 -->
+                    <button type="button" 
+                            class="awkward-btn" 
+                            tabindex="3" 
+                            style="opacity: 0.6;">
+                      Auxiliary Log (Bypass)
+                    </button>
+
+                    <!-- Step 2: tabindex 2 (Has missing focus indicator via CSS) -->
+                    <button type="button" 
+                            id="motor-step-2" 
+                            class="awkward-btn" 
+                            tabindex="2" 
+                            style="outline: none !important;">
+                      Step 2: Verify Settings
+                    </button>
+
+                    <!-- Step 3: tabindex 4 -->
+                    <button type="button" 
+                            id="motor-step-3" 
+                            class="awkward-btn" 
+                            tabindex="4">
+                      Step 3: Finalize Submission
+                    </button>
+                  </div>
+                </div>
+
+                <div id="motor-keyboard-feedback" style="margin-top: var(--space-md); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted);" aria-live="polite">
+                  Use Tab to begin navigation...
+                </div>
+              </div>
+            </div>
+
+            <!-- Feedback Box -->
+            <div id="motor-challenge-feedback" class="challenge-status-box" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <!-- 3. Real-Life Explanation Section -->
+        <section class="topic-section" aria-labelledby="explanation-heading">
+          <div class="section-label">
+            <span class="section-num">03</span>
+            <span class="section-heading-text">Connecting to Everyday Life</span>
+          </div>
+          <h2 id="explanation-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">
+            Physical Exhaustion and Lost Independence
+          </h2>
+          <div class="explanation-panel">
+            <p>
+              Navigating with a keyboard or assistive switch device requires physical stamina. When buttons lack visible focus rings, users must repeatedly press Tab while guessing where their cursor landed. If the tab sequence jumps erratically across the page, a simple two-minute form can turn into twenty minutes of frustrating trial and error.
+            </p>
+            <p>
+              For people experiencing muscle fatigue, motor tremors, or joint pain, poorly sized targets and confusing keyboard paths do not just cause inconvenience—they cause genuine physical discomfort and force individuals to abandon tasks they could otherwise complete independently.
+            </p>
+          </div>
+        </section>
+
+        <!-- 4. Practical Solutions (Concise Bullet Points) -->
+        <section class="topic-section" aria-labelledby="solutions-heading">
+          <div class="section-label">
+            <span class="section-num">04</span>
+            <span class="section-heading-text">Practical Solutions</span>
+          </div>
+          <h2 id="solutions-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">
+            How Designers and Developers Remove This Barrier
+          </h2>
+          <ul class="solutions-list">
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Ensure high-visibility focus indicators:</strong> Never remove focus outlines (<code>outline: none</code>) without providing a bold, high-contrast <code>:focus-visible</code> indicator.
+              </div>
+            </li>
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Adhere to minimum target sizes:</strong> Ensure all interactive buttons, links, and form fields have a minimum touch target size of at least 44&times;44 pixels (WCAG 2.5.5).
+              </div>
+            </li>
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Preserve logical source order:</strong> Rely on natural DOM HTML order for keyboard navigation instead of unpredictable positive <code>tabindex</code> values.
+              </div>
+            </li>
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Support full keyboard functionality:</strong> Ensure every action that can be performed with a mouse can also be triggered using standard keyboard keys (<kbd>Tab</kbd>, <kbd>Enter</kbd>, <kbd>Space</kbd>, and arrow keys).
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 5. Gated Improved Experience -->
+        <section class="topic-section" aria-labelledby="improved-heading">
+          <div class="section-label">
+            <span class="section-num">05</span>
+            <span class="section-heading-text">The Improved Experience</span>
+          </div>
+          <h2 id="improved-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
+            Comparing the Accessible Version
+          </h2>
+          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-lg);">
+            Complete or bypass the challenge in Section 02 to unlock the accessible comparison.
+          </p>
+
+          <div class="gated-toggle-wrapper">
+            <div class="toggle-header">
+              <div>
+                <span id="motor-gate-status" class="gate-status-msg">
+                  &bull; Complete the challenge above to unlock this toggle.
+                </span>
+              </div>
+              <div class="switch-control">
+                <button type="button" 
+                        class="toggle-btn" 
+                        id="motor-toggle-btn" 
+                        disabled 
+                        aria-disabled="true" 
+                        aria-pressed="false">
+                  Switch to Improved (Accessible Flow)
+                </button>
+              </div>
+            </div>
+
+            <!-- Improved Experience Card -->
+            <div id="motor-improved-display" class="improved-display-card">
+              <span class="eyebrow" style="color: var(--color-success);">&check; Accessible Action Sequence</span>
+              <h3 style="margin-bottom: var(--space-xs);">Document Verification Toolbar</h3>
+              
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-md);">
+                Pointer and keyboard navigation are both fully enabled below. Controls feature generous 48px target heights, logical DOM tab sequence, and prominent focus indicators:
+              </p>
+
+              <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+                <button type="button" class="btn btn-outline" style="min-height: 48px; padding: var(--space-sm) var(--space-md);">
+                  1. Load Document
+                </button>
+                <button type="button" class="btn btn-outline" style="min-height: 48px; padding: var(--space-sm) var(--space-md);">
+                  2. Verify Settings
+                </button>
+                <button type="button" class="btn btn-primary" style="min-height: 48px; padding: var(--space-sm) var(--space-md);">
+                  3. Finalize Submission
+                </button>
+              </div>
+
+              <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md); margin-top: var(--space-md); font-size: var(--text-xs); color: var(--color-text-muted);">
+                <strong>Why this version succeeds:</strong> Both mouse users and keyboard navigators can activate controls with ease. Targets are spacious, the tab order flows naturally from left to right, and clear focus indicators ensure users never lose their position.
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation -->
+          <nav class="topic-nav-footer" aria-label="Experience pagination">
+            <a href="hearing.html" class="btn btn-outline">
+              &larr; Previous: Hearing Accessibility
+            </a>
+            <a href="cognitive-language.html" class="btn btn-primary">
+              Next: Cognitive &amp; Language Accessibility &rarr;
+            </a>
+          </nav>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Minimal Single-Line Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <span><strong>Lumina</strong> &mdash; An academic web accessibility awareness project.</span>
+      <span>Built with semantic HTML5, CSS3, and Vanilla JavaScript &bull; &copy; 2026</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/motor.js"></script>
+</body>
+</html>

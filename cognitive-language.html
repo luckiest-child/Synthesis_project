@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cognitive &amp; Language Accessibility — Lumina</title>
+  <meta name="description" content="Explore how artificial countdown timers, visual clutter, and complex jargon create barriers, and how clear structure and plain language foster inclusion.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/topics.css">
+</head>
+<body>
+
+  <!-- Accessible Skip Link (WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="site-logo" aria-label="Lumina Home">
+        <span class="logo-text">Lumina</span>
+        <span class="logo-tag">/ Cognitive &amp; Language</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open navigation">
+        Menu
+      </button>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Overview</a></li>
+          <li><a href="visual.html" class="nav-link">Visual</a></li>
+          <li><a href="hearing.html" class="nav-link">Hearing</a></li>
+          <li><a href="motor.html" class="nav-link">Motor</a></li>
+          <li><a href="cognitive-language.html" class="nav-link" aria-current="page">Cognitive &amp; Language</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content" class="main-content">
+    
+    <!-- Topic Header -->
+    <header class="topic-header">
+      <div class="container-editorial">
+        <div class="topic-meta">
+          <span>Topic 04 &mdash; Cognitive &amp; Language Accessibility</span>
+          <span>Clarity, Calm &amp; Inclusive Language</span>
+        </div>
+        <h1>Cognitive &amp; Language Accessibility: Removing Mental Friction</h1>
+        <p class="lead-text">
+          Digital tasks require mental focus, working memory, and language processing. When interfaces use arbitrary countdown timers, inconsistent layouts, and dense bureaucratic jargon, they place unreasonable demands on human attention.
+        </p>
+      </div>
+    </header>
+
+    <div class="container-editorial">
+      <div class="topic-flow">
+
+        <!-- 1. Empathetic Introduction -->
+        <section class="topic-section" aria-labelledby="intro-heading">
+          <div class="section-label">
+            <span class="section-num">01</span>
+            <span class="section-heading-text">The Lived Barrier</span>
+          </div>
+          <h2 id="intro-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">
+            Cognitive Processing and Inclusive Communication
+          </h2>
+          <p>
+            Cognitive accessibility supports the broadest spectrum of web users, including people with ADHD, dyslexia, autism, brain injuries, dementia, and age-related memory decline—as well as individuals experiencing acute anxiety or mental exhaustion. Interfaces that impose strict time limits, hide labels inside fading placeholders, or wipe user input on error create intense cognitive overload.
+          </p>
+          <p>
+            <strong>Important Framing on Language:</strong> Language differences are an inclusive-design issue rather than synonymous with disability. While non-native speakers, second-language learners, and people under stress benefit greatly from clear language, individuals with cognitive or learning disabilities are also heavily supported when content is direct, well-organized, and free of unnecessary jargon.
+          </p>
+        </section>
+
+        <!-- 2. The Interactive Challenge (Isolated Sandbox) -->
+        <section class="topic-section" aria-labelledby="challenge-heading">
+          <div class="section-label">
+            <span class="section-num">02</span>
+            <span class="section-heading-text">The Interactive Challenge</span>
+          </div>
+          <h2 id="challenge-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
+            The High-Pressure, Cluttered Civic Application
+          </h2>
+          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-md);">
+            Experience how time pressure, disappearing labels, and bureaucratic language interfere with simple tasks.
+          </p>
+
+          <div class="challenge-sandbox" role="region" aria-label="Cognitive and language challenge sandbox">
+            <div class="sandbox-header">
+              <span class="sandbox-badge">
+                Isolated Barrier Simulation
+              </span>
+              <button type="button" class="btn btn-outline btn-sm" id="btn-skip-cognitive-challenge">
+                Skip Simulation / View Explanation
+              </button>
+            </div>
+
+            <div class="sandbox-instructions">
+              <p>
+                <strong>The Task:</strong> You are submitting a time-sensitive civic grant request.
+              </p>
+              <p style="margin: 0; color: var(--color-text-muted);">
+                Press <em>"Start Challenge"</em> below. The task begins immediately with an automated 20-second timer and cluttered, ambiguous instructions. Try to complete the form before the clock expires.
+              </p>
+            </div>
+
+            <!-- Original Problematic Display Area -->
+            <div id="cognitive-language-original-display">
+              <div style="text-align: center; margin-bottom: var(--space-md);">
+                <button type="button" class="btn btn-primary" id="btn-start-cognitive-task">
+                  Start Challenge &rarr;
+                </button>
+              </div>
+
+              <!-- Active Task Container (Revealed upon Start) -->
+              <div id="cognitive-task-active-area" style="display: none;">
+                
+                <!-- Countdown Timer Bar -->
+                <div style="display: flex; justify-content: space-between; align-items: center; background-color: var(--color-surface); border: 1px solid var(--color-border); padding: var(--space-xs) var(--space-md); border-radius: var(--radius-sm); margin-bottom: var(--space-md);">
+                  <span style="font-size: var(--text-xs); font-family: var(--font-mono); font-weight: 700;">
+                    SESSION TIMEOUT:
+                  </span>
+                  <span id="cognitive-active-timer" class="cognitive-timer-display">
+                    00:20
+                  </span>
+                </div>
+
+                <!-- Cluttered Bureaucratic Instructions -->
+                <div class="cluttered-instruction-box">
+                  <p style="font-weight: 700; margin-bottom: 4px;">
+                    Statutory Subvention Protocol 8(b):
+                  </p>
+                  <p style="margin: 0; color: var(--color-text-muted);">
+                    Pursuant to subsection 4(c), applicants must furnish diurnal sustenance verification documentation prior to authorization of pecuniary subventions. Non-compliance precipitates immediate declination.
+                  </p>
+                </div>
+
+                <!-- Cluttered Form: Disappearing Placeholders, No Permanent Labels -->
+                <form id="cognitive-cluttered-form">
+                  <div class="form-field">
+                    <input type="text" placeholder="Enter alphanumeric citizen reference ID..." required>
+                  </div>
+                  <div class="form-field">
+                    <input type="text" placeholder="Designate diurnal sustenance disbursement sum..." required>
+                  </div>
+                  <div class="form-field">
+                    <input type="email" placeholder="Primary electronic transmission address..." required>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-sm" style="width: 100%;">
+                    Submit Application Before Timeout
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Feedback Box -->
+            <div id="cognitive-challenge-feedback" class="challenge-status-box" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <!-- 3. Real-Life Explanation Section -->
+        <section class="topic-section" aria-labelledby="explanation-heading">
+          <div class="section-label">
+            <span class="section-num">03</span>
+            <span class="section-heading-text">Connecting to Everyday Life</span>
+          </div>
+          <h2 id="explanation-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">
+            The Cost of Cognitive Overload and Bureaucratic Jargon
+          </h2>
+          <div class="explanation-panel">
+            <p>
+              When an interface imposes arbitrary countdown timers, it splits the user's attention. Instead of concentrating on the task, cognitive bandwidth is consumed by anxiety. For people with dyslexia, ADHD, or traumatic brain injuries, being rushed frequently leads to abandonment and distress.
+            </p>
+            <p>
+              Similarly, using puffed-up bureaucratic vocabulary (&ldquo;diurnal sustenance subvention&rdquo; instead of &ldquo;daily food grant&rdquo;) creates an artificial barrier. It intimidates citizens seeking public aid, confuses second-language speakers, and increases errors across the entire population. Plain language is an act of inclusion and respect.
+            </p>
+          </div>
+        </section>
+
+        <!-- 4. Practical Solutions (Concise Bullet Points) -->
+        <section class="topic-section" aria-labelledby="solutions-heading">
+          <div class="section-label">
+            <span class="section-num">04</span>
+            <span class="section-heading-text">Practical Solutions</span>
+          </div>
+          <h2 id="solutions-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">
+            How Designers and Developers Remove This Barrier
+          </h2>
+          <ul class="solutions-list">
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Use permanent, persistent labels:</strong> Always use explicit <code>&lt;label for="..."&gt;</code> tags so users do not have to rely on working memory after typing begins.
+              </div>
+            </li>
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Eliminate arbitrary time limits:</strong> Give visitors as much time as they need, or provide an obvious mechanism to turn off or extend timeouts (WCAG 2.2.1).
+              </div>
+            </li>
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Write in plain language:</strong> Replace inflated administrative jargon with everyday vocabulary (e.g., &ldquo;before&rdquo; instead of &ldquo;prior to&rdquo;, &ldquo;grant&rdquo; instead of &ldquo;subvention&rdquo;).
+              </div>
+            </li>
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Provide constructive, non-destructive validation:</strong> Never wipe entered form fields on an error; clearly highlight the single field needing attention with helpful suggestions.
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 5. Gated Improved Experience -->
+        <section class="topic-section" aria-labelledby="improved-heading">
+          <div class="section-label">
+            <span class="section-num">05</span>
+            <span class="section-heading-text">The Improved Experience</span>
+          </div>
+          <h2 id="improved-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
+            Comparing the Accessible Version
+          </h2>
+          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-lg);">
+            Complete or bypass the challenge in Section 02 to unlock the accessible comparison.
+          </p>
+
+          <div class="gated-toggle-wrapper">
+            <div class="toggle-header">
+              <div>
+                <span id="cog-lang-gate-status" class="gate-status-msg">
+                  &bull; Complete the challenge above to unlock this toggle.
+                </span>
+              </div>
+              <div class="switch-control">
+                <button type="button" 
+                        class="toggle-btn" 
+                        id="cog-lang-toggle-btn" 
+                        disabled 
+                        aria-disabled="true" 
+                        aria-pressed="false">
+                  Switch to Improved (Calm &amp; Clear)
+                </button>
+              </div>
+            </div>
+
+            <!-- Improved Experience Card -->
+            <div id="cog-lang-improved-display" class="improved-display-card">
+              <span class="eyebrow" style="color: var(--color-success);">&check; Calm, Plain-Language Application</span>
+              <h3 style="margin-bottom: var(--space-xs);">Community Support Grant Application</h3>
+              
+              <!-- Plain Language Notice -->
+              <div style="background-color: var(--color-surface-muted); border-left: 3px solid var(--color-text); padding: var(--space-md); margin: var(--space-md) 0;">
+                <p style="font-weight: 700; font-size: var(--text-sm); margin-bottom: 2px;">
+                  What you need to know:
+                </p>
+                <p style="font-size: var(--text-sm); margin: 0; color: var(--color-text);">
+                  If you need emergency funding for daily food or basic living costs, please complete the fields below. There is no countdown timer, and you can take as much time as you need.
+                </p>
+              </div>
+
+              <!-- Calm Form with Permanent Labels and Helper Notes -->
+              <div style="max-width: 32rem; margin-top: var(--space-lg);">
+                <div class="form-field">
+                  <label for="calm-citizen-id">Full Name or Reference Number</label>
+                  <span style="font-size: var(--text-xs); color: var(--color-text-muted);">As it appears on your identification card.</span>
+                  <input type="text" id="calm-citizen-id" value="Alex Morgan" readonly>
+                </div>
+
+                <div class="form-field">
+                  <label for="calm-grant-amount">Requested Grant Amount (&pound;)</label>
+                  <span style="font-size: var(--text-xs); color: var(--color-text-muted);">Enter the estimated sum needed for living expenses this week.</span>
+                  <input type="text" id="calm-grant-amount" value="150.00" readonly>
+                </div>
+
+                <div class="form-field">
+                  <label for="calm-contact-email">Email Address</label>
+                  <span style="font-size: var(--text-xs); color: var(--color-text-muted);">We will email your confirmation and next steps here.</span>
+                  <input type="email" id="calm-contact-email" value="alex.morgan@example.com" readonly>
+                </div>
+              </div>
+
+              <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md); margin-top: var(--space-md); font-size: var(--text-xs); color: var(--color-text-muted);">
+                <strong>Why this version succeeds:</strong> No countdown timer pressures the reader. Field labels are permanent and clearly separated from helper hints, and the instructions are written in plain, respectful English that everyone can understand.
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation -->
+          <nav class="topic-nav-footer" aria-label="Experience pagination">
+            <a href="motor.html" class="btn btn-outline">
+              &larr; Previous: Motor Accessibility
+            </a>
+            <a href="index.html" class="btn btn-primary">
+              Return to Overview &rarr;
+            </a>
+          </nav>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Minimal Single-Line Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <span><strong>Lumina</strong> &mdash; An academic web accessibility awareness project.</span>
+      <span>Built with semantic HTML5, CSS3, and Vanilla JavaScript &bull; &copy; 2026</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/cognitive-language.js"></script>
+</body>
+</html>

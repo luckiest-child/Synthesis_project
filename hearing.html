@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hearing Accessibility — Lumina</title>
+  <meta name="description" content="Explore how spoken audio without captions or text alternatives creates barriers for people who are deaf or hard of hearing.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/topics.css">
+</head>
+<body>
+
+  <!-- Accessible Skip Link (WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="site-logo" aria-label="Lumina Home">
+        <span class="logo-text">Lumina</span>
+        <span class="logo-tag">/ Hearing</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open navigation">
+        Menu
+      </button>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Overview</a></li>
+          <li><a href="visual.html" class="nav-link">Visual</a></li>
+          <li><a href="hearing.html" class="nav-link" aria-current="page">Hearing</a></li>
+          <li><a href="motor.html" class="nav-link">Motor</a></li>
+          <li><a href="cognitive-language.html" class="nav-link">Cognitive &amp; Language</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content" class="main-content">
+    
+    <!-- Topic Header -->
+    <header class="topic-header">
+      <div class="container-editorial">
+        <div class="topic-meta">
+          <span>Topic 02 &mdash; Hearing Accessibility</span>
+          <span>Captions &amp; Auditory Alternatives</span>
+        </div>
+        <h1>Hearing Accessibility: Beyond the Soundwave</h1>
+        <p class="lead-text">
+          Spoken audio is widely used for video lectures, emergency public announcements, and collaborative meetings. When spoken information lacks synchronized text alternatives, millions of people are excluded from essential communication.
+        </p>
+      </div>
+    </header>
+
+    <div class="container-editorial">
+      <div class="topic-flow">
+
+        <!-- 1. Empathetic Introduction -->
+        <section class="topic-section" aria-labelledby="intro-heading">
+          <div class="section-label">
+            <span class="section-num">01</span>
+            <span class="section-heading-text">The Lived Barrier</span>
+          </div>
+          <h2 id="intro-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">
+            When Crucial Spoken Words Leave No Trace on Screen
+          </h2>
+          <p>
+            More than 430 million people worldwide live with disabling hearing loss. This encompasses individuals who are profoundly deaf, people who are hard of hearing and use hearing aids, and older adults experiencing age-related hearing decline. In addition, millions of people browse in quiet study halls, offices, or loud commutes where audio cannot be heard.
+          </p>
+          <p>
+            When a digital service delivers critical directions—such as a gate change at an airport, an emergency evacuation protocol, or instructions in an educational lecture—solely through spoken dialogue without synchronized captions, deaf and hard-of-hearing individuals are placed at an immediate disadvantage. They cannot participate equitably and are forced to guess or seek external help.
+          </p>
+        </section>
+
+        <!-- 2. The Interactive Challenge (Isolated Sandbox) -->
+        <section class="topic-section" aria-labelledby="challenge-heading">
+          <div class="section-label">
+            <span class="section-num">02</span>
+            <span class="section-heading-text">The Interactive Challenge</span>
+          </div>
+          <h2 id="challenge-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
+            The Silent Emergency Transit Broadcast
+          </h2>
+          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-md);">
+            In this challenge, spoken information is deliberately withheld to demonstrate the barrier of audio-only communication.
+          </p>
+
+          <div class="challenge-sandbox" role="region" aria-label="Hearing accessibility challenge sandbox">
+            <div class="sandbox-header">
+              <span class="sandbox-badge">
+                Isolated Barrier Simulation
+              </span>
+              <button type="button" class="btn btn-outline btn-sm" id="btn-skip-hearing-challenge">
+                Skip Simulation / View Explanation
+              </button>
+            </div>
+
+            <div class="sandbox-instructions">
+              <p>
+                <strong>The Task:</strong> You are waiting at a central terminal for the express airport rail. A live broadcast begins with an urgent update.
+              </p>
+              <p style="margin: 0; color: var(--color-text-muted);">
+                In this inaccessible interface, the announcement is communicated through spoken speech without any captions or text on screen. Press <em>"Play Broadcast"</em> below and attempt to answer where passengers must board.
+              </p>
+            </div>
+
+            <!-- Original Problematic Display Area -->
+            <div id="hearing-original-display">
+              <div class="silent-broadcast-frame">
+                <span class="audio-track-status">[Live Terminal Broadcast Channel]</span>
+                
+                <div class="silent-media-screen">
+                  <span id="silent-screen-indicator" style="font-family: var(--font-mono); font-size: var(--text-xs); color: #B0B0AA;">
+                    [Press "Play Broadcast" to start scene &bull; Audio track will run silently]
+                  </span>
+                </div>
+
+                <button type="button" class="btn btn-subtle btn-sm" id="btn-play-silent-broadcast">
+                  ▶ Play Broadcast (Audio Only)
+                </button>
+              </div>
+
+              <!-- Decision Form -->
+              <form id="hearing-attempt-form" style="margin-top: var(--space-lg);">
+                <fieldset style="border: 1px solid var(--color-border); padding: var(--space-md); border-radius: var(--radius-sm);">
+                  <legend style="padding: 0 var(--space-xs); font-weight: 700; font-size: var(--text-sm);">
+                    Where must passengers board according to the broadcast?
+                  </legend>
+
+                  <div style="display: flex; flex-direction: column; gap: var(--space-xs); margin: var(--space-md) 0;">
+                    <label style="display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); cursor: pointer;">
+                      <input type="radio" name="transit_gate" value="gate_4"> Gate 4 (Underground Concourse)
+                    </label>
+                    <label style="display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); cursor: pointer;">
+                      <input type="radio" name="transit_gate" value="west_annex"> Shuttle Bus at West Annex Bay 2
+                    </label>
+                    <label style="display: flex; align-items: center; gap: var(--space-xs); font-size: var(--text-sm); cursor: pointer;">
+                      <input type="radio" name="transit_gate" value="platform_1"> Platform 1 (Main Hall)
+                    </label>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-sm">
+                    Confirm Transit Decision
+                  </button>
+                </fieldset>
+              </form>
+            </div>
+
+            <!-- Feedback Box -->
+            <div id="hearing-challenge-feedback" class="challenge-status-box" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <!-- 3. Real-Life Explanation Section -->
+        <section class="topic-section" aria-labelledby="explanation-heading">
+          <div class="section-label">
+            <span class="section-num">03</span>
+            <span class="section-heading-text">Connecting to Everyday Life</span>
+          </div>
+          <h2 id="explanation-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">
+            The Isolation of Uncaptioned Audio
+          </h2>
+          <div class="explanation-panel">
+            <p>
+              When websites and web applications deliver spoken information without text alternatives, people who cannot hear are completely excluded. In public transit hubs, missing an auditory gate announcement can cause missed flights, strand commuters, or pose acute safety hazards during emergency evacuations.
+            </p>
+            <p>
+              In educational and professional contexts, uncaptioned videos and audio presentations lock deaf students and employees out of core learning materials and discussions. Providing synchronized captions is not an optional aesthetic addition; it is the fundamental bridge that guarantees equal access to spoken culture.
+            </p>
+          </div>
+        </section>
+
+        <!-- 4. Practical Solutions (Concise Bullet Points) -->
+        <section class="topic-section" aria-labelledby="solutions-heading">
+          <div class="section-label">
+            <span class="section-num">04</span>
+            <span class="section-heading-text">Practical Solutions</span>
+          </div>
+          <h2 id="solutions-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-md);">
+            How Designers and Developers Remove This Barrier
+          </h2>
+          <ul class="solutions-list">
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Provide synchronized captions:</strong> Include accurate closed captions synchronized with speech using standard HTML5 <code>&lt;track kind="captions"&gt;</code> elements.
+              </div>
+            </li>
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Supply full transcripts:</strong> Offer an easily readable, searchable plain-text transcript alongside all recorded audio and video media.
+              </div>
+            </li>
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Pair sound alerts with visual cues:</strong> Never use sound effects as the sole notification for errors, countdowns, or status changes; always show an accompanying visual banner.
+              </div>
+            </li>
+            <li>
+              <span class="solution-bullet">&bull;</span>
+              <div>
+                <strong>Indicate non-speech audio:</strong> In captions and transcripts, describe meaningful sound effects (such as <em>[alarm chimes]</em> or <em>[door closes]</em>) so context is preserved.
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 5. Gated Improved Experience -->
+        <section class="topic-section" aria-labelledby="improved-heading">
+          <div class="section-label">
+            <span class="section-num">05</span>
+            <span class="section-heading-text">The Improved Experience</span>
+          </div>
+          <h2 id="improved-heading" style="font-size: var(--text-xl); margin-bottom: var(--space-sm);">
+            Comparing the Accessible Version
+          </h2>
+          <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-lg);">
+            Complete or bypass the challenge in Section 02 to unlock the accessible comparison.
+          </p>
+
+          <div class="gated-toggle-wrapper">
+            <div class="toggle-header">
+              <div>
+                <span id="hearing-gate-status" class="gate-status-msg">
+                  &bull; Complete the challenge above to unlock this toggle.
+                </span>
+              </div>
+              <div class="switch-control">
+                <button type="button" 
+                        class="toggle-btn" 
+                        id="hearing-toggle-btn" 
+                        disabled 
+                        aria-disabled="true" 
+                        aria-pressed="false">
+                  Switch to Improved (Captioned)
+                </button>
+              </div>
+            </div>
+
+            <!-- Improved Experience Card -->
+            <div id="hearing-improved-display" class="improved-display-card">
+              <span class="eyebrow" style="color: var(--color-success);">&check; Synchronized Captioned Broadcast</span>
+              <h3 style="margin-bottom: var(--space-xs);">Live Transit Update &mdash; Express Rail</h3>
+              
+              <!-- Visual Alert Banner -->
+              <div style="background-color: var(--color-surface-muted); border-left: 3px solid var(--color-text); padding: var(--space-md); margin: var(--space-md) 0;" role="status">
+                <p style="font-weight: 700; font-size: var(--text-sm); margin-bottom: 2px;">
+                  ⚠️ Track Maintenance Notice
+                </p>
+                <p style="font-size: var(--text-sm); margin: 0; color: var(--color-text);">
+                  Due to emergency rail inspection on Platform 1, all passengers for the Northbound Express must board the replacement bus at <strong>West Annex Bay 2</strong>.
+                </p>
+              </div>
+
+              <!-- Synchronized Captions Box -->
+              <div style="background-color: #1A1A18; color: #FFFFFF; padding: var(--space-md); border-radius: var(--radius-sm); font-size: var(--text-sm); text-align: center; margin-bottom: var(--space-md);">
+                🔊 <strong>[Speaker]:</strong> &ldquo;Attention all passengers: Track 1 is closed for maintenance. Please proceed to <strong>West Annex Bay 2</strong> to board the replacement express shuttle.&rdquo;
+              </div>
+
+              <!-- Collapsible Full Transcript -->
+              <details style="border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-sm); font-size: var(--text-sm);">
+                <summary style="font-weight: 600; cursor: pointer;">
+                  📄 View Full Spoken Transcript
+                </summary>
+                <div style="padding-top: var(--space-sm); color: var(--color-text-muted); line-height: 1.7;">
+                  <p><strong>[00:00 &bull; Chime Sounds]</strong></p>
+                  <p><strong>Announcer:</strong> &ldquo;Attention all passengers: Track 1 is temporarily closed due to an unscheduled track inspection. All northbound airport express services will now depart via shuttle bus from West Annex Bay 2. Ground staff are stationed at Exit B to assist with luggage.&rdquo;</p>
+                </div>
+              </details>
+
+              <div style="border-top: 1px solid var(--color-border); padding-top: var(--space-md); margin-top: var(--space-md); font-size: var(--text-xs); color: var(--color-text-muted);">
+                <strong>Why this version succeeds:</strong> Spoken directions are paired immediately with synchronized captions and an on-screen visual alert banner. Visitors who are deaf, hard of hearing, or browsing in sound-sensitive environments have equal, independent access.
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation -->
+          <nav class="topic-nav-footer" aria-label="Experience pagination">
+            <a href="visual.html" class="btn btn-outline">
+              &larr; Previous: Visual Accessibility
+            </a>
+            <a href="motor.html" class="btn btn-primary">
+              Next: Motor Accessibility &rarr;
+            </a>
+          </nav>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Minimal Single-Line Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <span><strong>Lumina</strong> &mdash; An academic web accessibility awareness project.</span>
+      <span>Built with semantic HTML5, CSS3, and Vanilla JavaScript &bull; &copy; 2026</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/hearing.js"></script>
+</body>
+</html>

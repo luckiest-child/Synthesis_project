@@ -1,0 +1,428 @@
+/* ==========================================================================
+   LUMINA TOPIC EXPERIENCES & INTERACTIVE CHALLENGES
+   Editorial layout, isolated sandboxes, gated toggles, and accessible comparisons.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Topic Header & Section Structure
+   -------------------------------------------------------------------------- */
+.topic-header {
+  padding: var(--space-3xl) 0 var(--space-2xl) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.topic-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.topic-flow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+  padding: var(--space-3xl) 0;
+}
+
+.topic-section {
+  position: relative;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: clamp(var(--space-xl), 4vw, var(--space-2xl));
+}
+
+.section-label {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-sm);
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.section-heading-text {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* --------------------------------------------------------------------------
+   2. Dedicated Challenge Sandbox (Isolated Demonstration)
+   -------------------------------------------------------------------------- */
+.challenge-sandbox {
+  border: 1px solid var(--color-border-strong);
+  background-color: var(--color-surface-muted);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xl);
+  position: relative;
+  margin-top: var(--space-md);
+}
+
+.sandbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sandbox-badge {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.sandbox-instructions {
+  background-color: var(--color-surface);
+  border-left: 3px solid var(--color-text);
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+.sandbox-interactive-zone {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-lg);
+}
+
+.challenge-status-box {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  display: none;
+}
+
+.challenge-status-box.is-visible {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   3. Real-Life Explanation Section (Connecting Difficulty to Barriers)
+   -------------------------------------------------------------------------- */
+.explanation-panel {
+  background-color: var(--color-surface);
+  border-left: 3px solid var(--color-accent);
+  padding: var(--space-lg);
+  margin-top: var(--space-md);
+  font-size: var(--text-base);
+  line-height: 1.7;
+}
+
+.explanation-panel p {
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+/* --------------------------------------------------------------------------
+   4. Practical Solutions (Clean, Understandable Bullet Points)
+   -------------------------------------------------------------------------- */
+.solutions-list {
+  list-style: none;
+  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.solutions-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-surface-muted);
+  border-radius: var(--radius-sm);
+}
+
+.solution-bullet {
+  font-weight: 700;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. Gated Improved-Version Toggle & Reveal
+   -------------------------------------------------------------------------- */
+.gated-toggle-wrapper {
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.toggle-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.gate-status-msg {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.gate-status-msg.is-unlocked {
+  color: var(--color-success);
+  font-weight: 700;
+}
+
+.switch-control {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.toggle-btn {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  transition: all var(--transition-quick);
+}
+
+.toggle-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: var(--color-border);
+}
+
+.toggle-btn.is-active {
+  background-color: var(--color-text);
+  color: var(--color-surface);
+  border-color: var(--color-text);
+}
+
+.improved-display-card {
+  display: none;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xl);
+  margin-top: var(--space-lg);
+}
+
+.improved-display-card.is-active {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   6. Visual Challenge Specifics (Dark / Occluded Visual Field Simulation)
+   -------------------------------------------------------------------------- */
+.occluded-viewport {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  background-color: #0F0F0E; /* Dark simulated obstructed field */
+  border: 1px solid #2B2B28;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+}
+
+.occluded-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(15,15,14,0.92) 0%, rgba(10,10,10,0.99) 70%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: #A3A39E;
+}
+
+.occluded-task-content {
+  opacity: 0.05; /* Barely perceptible visual cues, simulating severe visual obstruction */
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   7. Hearing Challenge Specifics (Silent Audio-Only Media Broadcast)
+   -------------------------------------------------------------------------- */
+.silent-broadcast-frame {
+  background-color: #1A1A18;
+  color: #FFFFFF;
+  border-radius: var(--radius-sm);
+  padding: var(--space-xl);
+  text-align: center;
+  position: relative;
+}
+
+.audio-track-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  background-color: #2D2D2A;
+  color: #E0E0DC;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-md);
+}
+
+.silent-media-screen {
+  min-height: 120px;
+  background-color: #0D0D0C;
+  border: 1px solid #333330;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+/* --------------------------------------------------------------------------
+   8. Motor Challenge Specifics (Local Pointer Suppression)
+   -------------------------------------------------------------------------- */
+.pointer-suppressed-area {
+  position: relative;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-lg);
+}
+
+.pointer-suppressed-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.pointer-warning-banner {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  padding: var(--space-xs) var(--space-sm);
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+/* Deliberately poor keyboard order demonstration */
+.awkward-btn {
+  padding: 6px 10px;
+  font-size: var(--text-xs);
+  border: 1px solid #CCC;
+  background: #FFF;
+  cursor: pointer;
+}
+
+.awkward-btn:focus {
+  /* Missing prominent outline on one control in the barrier version */
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   9. Cognitive & Language Challenge Specifics
+   -------------------------------------------------------------------------- */
+.cognitive-timer-display {
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.cluttered-instruction-box {
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  padding: var(--space-md);
+  font-size: var(--text-xs);
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+}
+
+/* Form Styles */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-md);
+}
+
+.form-field label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  min-height: 40px;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--color-text);
+}
+
+/* --------------------------------------------------------------------------
+   10. Topic Pagination
+   -------------------------------------------------------------------------- */
+.topic-nav-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
